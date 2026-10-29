@@ -1,0 +1,26 @@
+{
+  "variantName": "columns-featured",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "featured article teaser pairing a large image with a text panel",
+    "description": "Featured article: Fixed-width; large image on left (~60%), light grey (#ebebeb-ish) text panel on right with eyebrow 'Featured Article', h2, paragraph, yellow CTA. Grey belongs to the block panel; section background white."
+  },
+  "contentPattern": {
+    "source": "/block-collection/columns",
+    "structure": "one row, two columns; column 1 = image, column 2 = eyebrow paragraph, h2, description and CTA link",
+    "rows": [
+      {
+        "row": "1",
+        "cells": [
+          { "name": "column 1", "content": "image" },
+          { "name": "column 2", "content": "eyebrow paragraph 'Featured Article', h2, description, CTA link" }
+        ]
+      }
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "usage": "Home page 'Featured Article' teaser (https://wknd.site/us/en.html): Camping in Western Australia.",
+  "reuseGuidance": "Use for a single image-plus-text teaser where the image sits beside a shaded text panel on desktop and stacks above it on mobile. Text column holds the column cells (text, title, button)."
+}

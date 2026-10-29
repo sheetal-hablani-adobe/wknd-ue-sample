@@ -15,13 +15,35 @@
       "hero",
       "cards",
       "columns",
-      "fragment"
+      "fragment",
+      "carousel-hero",
+      "columns-featured",
+      "cards-article",
+      "hero-teaser"
+    ]
+  },
+  {
+    "id": "cards-article",
+    "components": [
+      "cards-article-card"
     ]
   },
   {
     "id": "cards",
     "components": [
       "card"
+    ]
+  },
+  {
+    "id": "carousel-hero",
+    "components": [
+      "carousel-hero-item"
+    ]
+  },
+  {
+    "id": "columns-featured",
+    "components": [
+      "column"
     ]
   },
   {

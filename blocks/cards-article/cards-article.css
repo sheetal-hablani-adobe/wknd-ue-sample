@@ -1,0 +1,95 @@
+/* cards-article: values from wknd.site .image-list.list (cmp-image-list) */
+.cards-article {
+  color: var(--text-color);
+  padding: 0 14px;
+}
+
+.cards-article > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.cards-article > ul > li {
+  box-sizing: content-box;
+  flex: 0 1 260px;
+  min-width: 0;
+  margin: 0 0 32px;
+  padding-right: 0;
+}
+
+/* image: fixed 200px tall, cropped; 7px gap below matches source inline-image line box */
+.cards-article .cards-article-card-image {
+  line-height: 0;
+}
+
+.cards-article .cards-article-card-image p {
+  margin: 0;
+}
+
+.cards-article .cards-article-card-image picture {
+  display: block;
+}
+
+.cards-article .cards-article-card-image img {
+  display: block;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.cards-article .cards-article-card-body {
+  padding: 0;
+}
+
+.cards-article .cards-article-card-body h1,
+.cards-article .cards-article-card-body h2,
+.cards-article .cards-article-card-body h3,
+.cards-article .cards-article-card-body h4,
+.cards-article .cards-article-card-body h5,
+.cards-article .cards-article-card-body h6 {
+  margin: 7px 0 0;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  font-weight: 600;
+  line-height: 27px;
+  text-transform: uppercase;
+  color: var(--text-color);
+}
+
+.cards-article .cards-article-card-body h1 a:any-link,
+.cards-article .cards-article-card-body h2 a:any-link,
+.cards-article .cards-article-card-body h3 a:any-link,
+.cards-article .cards-article-card-body h4 a:any-link,
+.cards-article .cards-article-card-body h5 a:any-link,
+.cards-article .cards-article-card-body h6 a:any-link {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.cards-article .cards-article-card-body p {
+  margin: 16px 0 0;
+  font-size: var(--body-font-size-xs);
+  line-height: 21px;
+  color: rgb(105 105 105);
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (width >= 900px) {
+  .cards-article > ul {
+    justify-content: normal;
+  }
+
+  .cards-article > ul > li {
+    padding-right: 14px;
+  }
+}
