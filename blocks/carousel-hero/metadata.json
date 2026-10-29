@@ -1,0 +1,26 @@
+{
+  "variantName": "carousel-hero",
+  "baseBlock": "carousel",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "full-bleed rotating hero at the top of the home page, one promoted story per slide",
+    "description": "Hero carousel: Full-bleed photo slides, white content box overlapping bottom-left of image with heading, text and yellow CTA; dot indicators and prev/next arrows."
+  },
+  "contentPattern": {
+    "source": "get_all_blocks_catalog /block-collection/carousel",
+    "structure": "one row per slide; cell 1 = slide image (with alt), cell 2 = h2 title, description paragraph and CTA link",
+    "rows": [
+      {
+        "row": "slide (one per slide, repeatable)",
+        "cells": [
+          { "name": "media_image", "content": "slide image with alt" },
+          { "name": "content_text", "content": "h2 title, description paragraph, CTA link" }
+        ]
+      }
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "usage": "Home page hero carousel (https://wknd.site/us/en.html): 3 slides - WKND Adventures, San Diego Surf Spots, Downhill Skiing Wyoming.",
+  "reuseGuidance": "Use for a rotating set of full-bleed image slides with an overlaid text box and CTA. A single row renders as a static hero without controls."
+}

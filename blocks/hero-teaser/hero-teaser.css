@@ -1,0 +1,117 @@
+/* hero teaser is full bleed on the source (image spans the viewport) */
+main > .section > .hero-teaser-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.hero-teaser {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.hero-teaser > div {
+  width: 100%;
+}
+
+/* image */
+.hero-teaser .hero-teaser-image {
+  max-height: 400px;
+  overflow: hidden;
+}
+
+.hero-teaser .hero-teaser-image p {
+  margin: 0;
+}
+
+.hero-teaser .hero-teaser-image picture {
+  display: block;
+  height: 100%;
+}
+
+.hero-teaser .hero-teaser-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+
+  /* source crops the photo from the bottom edge */
+  object-position: 50% 100%;
+}
+
+/* content panel: stacks under the image on mobile */
+.hero-teaser .hero-teaser-content {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  padding: 0 14px;
+}
+
+.hero-teaser .hero-teaser-content :is(h1, h2, h3, h4, h5, h6) {
+  margin: 18px 0 0;
+  font-size: 36px;
+  line-height: 54px;
+}
+
+.hero-teaser .hero-teaser-content p {
+  margin: 0;
+  font-size: var(--body-font-size-m);
+  line-height: 31.5px;
+}
+
+.hero-teaser .hero-teaser-content p:has(> a:only-child) {
+  margin: 18px 0;
+  line-height: 21px;
+}
+
+/* CTA: authored as a plain link, rendered as the WKND yellow button */
+.hero-teaser .hero-teaser-content p > a:only-child,
+main .hero-teaser a.button:any-link {
+  display: inline-block;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  padding: var(--button-padding);
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  line-height: 21px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.hero-teaser .hero-teaser-content p > a:only-child:hover,
+main .hero-teaser a.button:any-link:hover {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+}
+
+@media (width >= 1200px) {
+  .hero-teaser .hero-teaser-image {
+    height: 640px;
+    max-height: 640px;
+  }
+
+  .hero-teaser .hero-teaser-image img {
+    height: 100%;
+  }
+
+  /* white panel overlaps the bottom of the image */
+  .hero-teaser .hero-teaser-image + .hero-teaser-content {
+    box-sizing: content-box;
+    width: 1136px;
+    min-height: 180px;
+    margin-top: -180px;
+    padding: 0 28px;
+    background-color: var(--background-color);
+  }
+
+  .hero-teaser.no-image .hero-teaser-content {
+    box-sizing: content-box;
+    width: 1136px;
+    padding: 0 28px;
+  }
+}
