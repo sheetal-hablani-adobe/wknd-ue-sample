@@ -31,25 +31,46 @@
 2. **Install the AEM Code Sync GitHub App** on the new repo. Choose "Only select repositories".
    - App: https://github.com/apps/aem-code-sync
    - Install directly: https://github.com/apps/aem-code-sync/installations/new
+   - After the install, GitHub opens the site setup wizard at https://tools.aem.live/bot/setup. It has four steps: **Code → Content → Users → Finish**. Keep it open for step 3.
    - Check: `https://main--<repo>--<org>.aem.page/head.html` should load.
    - **Note:** AEM Code Sync is what deploys the code to Edge Delivery. EMA needs a second GitHub App, the **AEM Code Connector**, to push code to the repo. You install it in Part 3, step 3.
 
-3. **Point the content source at AEM author.** Edit `fstab.yaml` in the repo and commit the change:
-   ```yaml
-   mountpoints:
-     /:
-       url: "https://<author-host>/bin/franklin.delivery/<org>/<repo>/main"
-       type: "markup"
-       suffix: ".html"
-   ```
-   - Docs for sites that use the configuration service: https://www.aem.live/docs/config-service-setup
+3. **Point the content source at AEM author.**
+   - **Build the content source URL.** It always has this shape:
+     ```
+     https://<author-host>/bin/franklin.delivery/<org>/<repo>/main
+     ```
+     | Part | Where to get it | Example |
+     |---|---|---|
+     | `<author-host>` | Sign in to AEM author and copy the host name from the browser address bar, without `https://` or anything after `.com`. You can also open it from Cloud Manager: your program → **Environments** → the environment → **Author** link. | `author-p233852-e2376453.adobeaemcloud.com` |
+     | `/bin/franklin.delivery/` | Always the same. | `/bin/franklin.delivery/` |
+     | `<org>/<repo>` | The GitHub owner and repository name, as in `https://github.com/<org>/<repo>`. | `sheetal-hablani-adobe/wknd-ue-sample` |
+     | `main` | The GitHub branch. | `main` |
+
+     Full example: `https://author-p233852-e2376453.adobeaemcloud.com/bin/franklin.delivery/sheetal-hablani-adobe/wknd-ue-sample/main`
+   - **Enter it in the setup wizard.** On the **Content** step:
+     1. Tick **Use a different content source**.
+     2. Set **Content source type** to **Other (bring your own markup)**.
+     3. Paste the URL into **Content source URL**. The wizard pre-fills the boilerplate's URL (`author-p130360-e1272151…/adobe-rnd/aem-boilerplate-xwalk/main`), so replace all of it.
+     4. Set **Suffix** to `.html`.
+     5. Continue to **Users**, add your email as Admin, then click **Finish**.
+   - **Also update `fstab.yaml`** in the repo with the same URL and commit it, so the repo matches the site config:
+     ```yaml
+     mountpoints:
+       /:
+         url: "https://<author-host>/bin/franklin.delivery/<org>/<repo>/main"
+         type: "markup"
+         suffix: ".html"
+     ```
+   - **Check:** open `https://admin.hlx.page/config/<org>/sites/<repo>.json` while signed in. `content.source.url` should show your URL, not the boilerplate's.
+   - Configuration service docs: https://www.aem.live/docs/config-service-setup
 
 4. **Create the site in AEM from the Edge Delivery Services site template.**
    - Download the template `.zip` from the Assets section of the latest release: https://github.com/adobe-rnd/aem-boilerplate-xwalk/releases
    - In AEM, go to **Sites → Create → Site from template → Import**. Upload the `.zip`, then enter the GitHub repo URL `https://github.com/<org>/<repo>`.
    - Sites console: `https://<author-host>/ui#/aem/sites.html<site-path>`
 
-5. **Add yourself as Admin** in the site config.
+5. **Confirm you're Admin** in the site config. If you added yourself on the wizard's **Users** step, this is just a check.
    - User Admin tool: https://tools.aem.live/tools/user-admin/index.html
    - Enter `<org>` and `<repo>`, click **Fetch users**, and make sure your email is listed as **Admin**. Do this before step 6, or you can lock yourself out of the site config.
 
@@ -110,6 +131,7 @@ Each step starts with a plain request typed into the chat:
 
 | Symptom | Cause and fix |
 |---|---|
+| Pages come from the wrong AEM instance, or publishing points at the boilerplate | The content source still has the boilerplate URL (`author-p130360-e1272151…/adobe-rnd/aem-boilerplate-xwalk/main`). Redo Part 2, step 3. |
 | Publish error: "technical account is missing … permissions" | Step 6 of Part 2 was skipped. Add the technical account as **Config Admin** in the User Admin tool. |
 | Page loads but the header and footer are empty | **Header (nav)** and **Footer** weren't published. Quick Publish them. |
 | **Sync → Code** is greyed out | Install the **AEM Code Connector** app on the repo (https://github.com/apps/aem-code-connector), or connect GitHub in Settings → Credentials. |
