@@ -17,7 +17,6 @@
       "columns",
       "fragment",
       "carousel-hero",
-      "columns-featured",
       "cards-article",
       "hero-teaser"
     ]
@@ -38,12 +37,6 @@
     "id": "carousel-hero",
     "components": [
       "carousel-hero-item"
-    ]
-  },
-  {
-    "id": "columns-featured",
-    "components": [
-      "column"
     ]
   },
   {

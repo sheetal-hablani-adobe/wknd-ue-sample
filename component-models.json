@@ -217,25 +217,6 @@
     ]
   },
   {
-    "id": "columns-featured",
-    "fields": [
-      {
-        "component": "text",
-        "valueType": "number",
-        "name": "columns",
-        "value": "",
-        "label": "Columns"
-      },
-      {
-        "component": "text",
-        "valueType": "number",
-        "name": "rows",
-        "value": "",
-        "label": "Rows"
-      }
-    ]
-  },
-  {
     "id": "columns",
     "fields": [
       {
@@ -251,6 +232,18 @@
         "name": "rows",
         "value": "",
         "label": "Rows"
+      },
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Style",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Featured",
+            "value": "featured"
+          }
+        ]
       }
     ]
   },
