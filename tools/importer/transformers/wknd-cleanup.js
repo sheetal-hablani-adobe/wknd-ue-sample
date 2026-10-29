@@ -58,6 +58,29 @@ export default function transform(hookName, element, payload) {
       }
     });
 
+    // Image URLs: Core Components serve renditions under ".../_jcr_content/...coreimg...",
+    // which can't be used as AEM Assets folder names. Point each image at its original
+    // DAM file instead (repo:path from the component's data layer, served by wknd.site).
+    element.querySelectorAll('img').forEach((img) => {
+      let el = img;
+      let repoPath = null;
+      while (el && el !== element && !repoPath) {
+        const raw = el.getAttribute && el.getAttribute('data-cmp-data-layer');
+        if (raw) {
+          try {
+            const entry = Object.values(JSON.parse(raw))[0];
+            repoPath = (entry && entry.image && entry.image['repo:path']) || null;
+          } catch (e) { /* not JSON: keep looking */ }
+        }
+        el = el.parentElement;
+      }
+      if (repoPath && repoPath.startsWith('/content/dam/')) {
+        img.setAttribute('src', new URL(repoPath, 'https://wknd.site').href);
+        img.removeAttribute('srcset');
+        img.removeAttribute('data-cmp-src');
+      }
+    });
+
     // Non-content elements
     removeAll(element, ['script', 'style', 'noscript', 'link']);
   }
