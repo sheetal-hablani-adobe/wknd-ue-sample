@@ -33,6 +33,10 @@
             {
               "name": "Highlight",
               "value": "highlight"
+            },
+            {
+              "name": "Divider Below",
+              "value": "divider"
             }
           ]
         }
@@ -50,7 +54,10 @@
         "hero",
         "cards",
         "columns",
-        "fragment"
+        "fragment",
+        "carousel-hero",
+        "cards-article",
+        "hero-teaser"
       ]
     }
   ]

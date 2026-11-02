@@ -1,0 +1,26 @@
+{
+  "variantName": "cards-article",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "row of image cards each linking to an article or adventure detail page",
+    "description": "Recent Articles: Underlined h2 title (short yellow underline), 4 image cards in a row, yellow 'All Articles' button, closed by an hr separator (section break).\nWhere do you want to go: h3 title (no underline), 4 adventure cards in a row identical in style to Recent Articles, yellow 'All Trips' button, closed by hr separator."
+  },
+  "contentPattern": {
+    "source": "/block-collection/cards",
+    "structure": "one row per card; cell 1 = card image (with alt), cell 2 = title as linked heading/strong and description paragraph",
+    "rows": [
+      {
+        "row": "card (one per item, repeatable)",
+        "cells": [
+          { "name": "image", "content": "card image (imageAlt)" },
+          { "name": "text", "content": "title as linked heading/strong, description paragraph" }
+        ]
+      }
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "usage": "Home page (https://wknd.site/us/en.html), used twice: 'Recent Articles' (4 magazine article cards) and 'Where do you want to go' (4 adventure cards). Section heading and the 'All Articles' / 'All Trips' button are default content around the block.",
+  "reuseGuidance": "Use for a grid of 4 image cards, each with a linked title and short description, pointing to detail pages. 4 columns on desktop, 2 on tablet, 1 on mobile."
+}

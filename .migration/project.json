@@ -1,0 +1,15 @@
+{
+  "type": "xwalk",
+  "sites": {
+    "wknd-ue-sample": {
+      "previewOrg": "sheetal-hablani-adobe",
+      "previewSite": "wknd-ue-sample",
+      "contentHostUrl": "author-p233852-e2376453.adobeaemcloud.com",
+      "aemSitePath": "/content/wknd-ue-sample",
+      "aemAssetsFolderPath": "/content/dam/wknd-ue-sample",
+      "aemSiteName": "wknd-ue-sample",
+      "aemSiteTitle": "WKND UE Sample",
+      "libraryUrl": "https://main--sta-xwalk-boilerplate--aemysites.aem.page/tools/sidekick/library.json"
+    }
+  }
+}

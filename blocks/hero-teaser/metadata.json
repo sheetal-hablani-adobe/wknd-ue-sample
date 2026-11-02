@@ -1,0 +1,30 @@
+{
+  "variantName": "hero-teaser",
+  "baseBlock": "hero",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "single promoted story teaser (Next Adventures) on the home page",
+    "description": "Full-bleed photo (640px tall at desktop) with a white text panel overlapping the bottom of the image, containing an h2 title, description paragraph and yellow uppercase CTA button. On mobile the panel stacks under the image."
+  },
+  "contentPattern": {
+    "structure": "row 1 = image (with alt), row 2 = rich text with h2 title, description paragraph and CTA link",
+    "rows": [
+      {
+        "row": "1",
+        "cells": [
+          { "name": "image", "content": "background image with alt (imageAlt)" }
+        ]
+      },
+      {
+        "row": "2",
+        "cells": [
+          { "name": "text", "content": "h2 title, description paragraph, CTA link" }
+        ]
+      }
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "usage": "Home page \"Next Adventures\" teaser (https://wknd.site/us/en.html): Climbing New Zealand, source selector .teaser.cmp-teaser--imagebottom.",
+  "reuseGuidance": "Use for a single static full-width image with an overlapping text panel and CTA. For several rotating slides use carousel-hero; for a text-over-image banner use hero."
+}

@@ -1,0 +1,232 @@
+/* hero carousel is full bleed on the source (image spans the viewport) */
+main > .section > .carousel-hero-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.carousel-hero {
+  margin-bottom: 72px;
+}
+
+.carousel-hero .carousel-hero-slides-container {
+  position: relative;
+}
+
+.carousel-hero .carousel-hero-slides,
+.carousel-hero .carousel-hero-slide-indicators {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel-hero .carousel-hero-slides {
+  display: flex;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overflow: scroll clip;
+  scrollbar-width: none;
+}
+
+.carousel-hero .carousel-hero-slides::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-hero .carousel-hero-slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+/* image */
+.carousel-hero .carousel-hero-slide-image {
+  width: 100%;
+  max-height: 400px;
+  overflow: hidden;
+}
+
+.carousel-hero .carousel-hero-slide-image p {
+  margin: 0;
+}
+
+.carousel-hero .carousel-hero-slide-image picture {
+  display: block;
+  height: 100%;
+}
+
+.carousel-hero .carousel-hero-slide-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center center;
+}
+
+/* content */
+.carousel-hero .carousel-hero-slide-content {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 14px;
+}
+
+.carousel-hero .carousel-hero-slide-content h2 {
+  margin: 18px 0 0;
+  font-size: 36px;
+  line-height: 54px;
+}
+
+.carousel-hero .carousel-hero-slide-content p {
+  margin: 0;
+  font-size: var(--body-font-size-m);
+  line-height: 31.5px;
+}
+
+.carousel-hero .carousel-hero-slide-content p:has(> a:only-child) {
+  margin: 18px 0;
+  line-height: 21px;
+}
+
+/* CTA: authored as a plain link, rendered as the WKND yellow button */
+.carousel-hero .carousel-hero-slide-content p > a:only-child,
+main .carousel-hero a.button:any-link {
+  display: inline-block;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  padding: var(--button-padding);
+  background-color: var(--accent-color);
+  color: var(--text-color);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  line-height: 21px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.carousel-hero .carousel-hero-slide-content p > a:only-child:hover,
+main .carousel-hero a.button:any-link:hover {
+  background-color: var(--accent-color);
+  color: var(--text-color);
+}
+
+/* slide indicators */
+.carousel-hero nav {
+  margin-top: 9px;
+}
+
+.carousel-hero .carousel-hero-slide-indicators {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 14px 0 0 14px;
+  line-height: 0;
+}
+
+.carousel-hero .carousel-hero-slide-indicator {
+  margin: 0 7px;
+}
+
+.carousel-hero .carousel-hero-slide-indicator button {
+  display: block;
+  width: 10px;
+  height: 10px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: rgb(175 175 175);
+  cursor: pointer;
+}
+
+.carousel-hero .carousel-hero-slide-indicator button:disabled {
+  background-color: rgb(0 0 0 / 80%);
+  cursor: default;
+}
+
+/* previous / next arrows, right aligned below the slide */
+.carousel-hero .carousel-hero-navigation-buttons {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 2;
+  line-height: 27px;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.carousel-hero .carousel-hero-navigation-buttons button {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  width: 26px;
+  height: 24px;
+  margin: 0 13.3333px 0 0;
+  padding: 1px 0 1px 6px;
+  border: 0;
+  background: none;
+  color: rgb(0 0 0);
+  cursor: pointer;
+}
+
+/* arrow shaft */
+.carousel-hero .carousel-hero-navigation-buttons button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 7px;
+  width: 18px;
+  height: 2px;
+  margin-top: -1px;
+  background-color: currentcolor;
+}
+
+/* arrow head */
+.carousel-hero .carousel-hero-navigation-buttons button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 9px;
+  box-sizing: border-box;
+  width: 10px;
+  height: 10px;
+  border: solid currentcolor;
+  border-width: 0 0 2px 2px;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.carousel-hero .carousel-hero-navigation-buttons .carousel-hero-next::after {
+  left: 13px;
+  transform: translateY(-50%) rotate(-135deg);
+}
+
+@media (width >= 900px) {
+  /* indicators centred in the space left of the arrows (82px) */
+  .carousel-hero .carousel-hero-slide-indicators {
+    justify-content: center;
+    padding: 0 82px 0 0;
+  }
+}
+
+@media (width >= 1200px) {
+  .carousel-hero .carousel-hero-slide-image {
+    height: 640px;
+    max-height: 640px;
+  }
+
+  .carousel-hero .carousel-hero-slide-image img {
+    height: 100%;
+  }
+
+  .carousel-hero .carousel-hero-slide-content {
+    box-sizing: content-box;
+    width: 1136px;
+    min-height: 180px;
+    margin-top: -180px;
+    padding: 0 28px;
+    background-color: var(--background-color);
+  }
+}
